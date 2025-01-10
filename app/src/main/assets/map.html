@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Azure Maps - Pantalla Completa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #myMap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="myMap"></div>
+<script>
+    const primaryKey = '<PRIMARY KEY>';
+
+    const map = new atlas.Map('myMap', {
+        center: [0, 0], // Coordenadas iniciales (puedes cambiarlas).
+        zoom: 2,        // Nivel de zoom inicial.
+        language: 'en-US',
+        authOptions: {
+            authType: 'subscriptionKey',
+            subscriptionKey: primaryKey
+        }
+    });
+
+    map.events.add('ready', function () {
+        map.controls.add(new atlas.control.ZoomControl(), {
+            position: 'top-right'
+        });
+    });
+</script>
+</body>
+</html>
